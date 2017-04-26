@@ -37,7 +37,7 @@ function binary_search (search, array, res=0) {
     return res;
   }
   if(index==Math.floor(array.length/2)) {
-    return index;
+    return res+index;
   } else {
     if(index>array.length/2) {
       res+=Math.floor(array.length/2);

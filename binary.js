@@ -28,7 +28,7 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array, res=0) {
   let target=search;
-  let index=0;
+  let index;
   for(let i=0;i<array.length;i++) {
     if(search==array[i]) index=i;
   }
@@ -50,10 +50,12 @@ function binary_search (search, array, res=0) {
       return binary_search(target, arr,res);
     }
   }
+  return -1;
 }
 
 // Driver code
 console.log(binary_search(5, test_array_genap))
+console.log(binary_search(12, test_array_genap))
 console.log(binary_search(10, test_array_genap))
 console.log(binary_search(2, test_array_genap))
 

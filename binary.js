@@ -27,15 +27,25 @@ var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
-  // Your code here
-
+  let indexMid = Math.floor((1+array.length)/2);
+  if(array[indexMid-1] == search){
+    return array[indexMid-1];
+  } else if (search > array[indexMid-1]){
+    let higherArray = array.slice(indexMid, array.length);
+    //return higherArray;
+    return binary_search(search, higherArray);
+  } else if (search < array[indexMid]){
+    let lowerArray = array.slice(0, indexMid);
+    //return lowerArray;
+    return binary_search(search, lowerArray);
+  }
 }
 
 // Driver code
 console.log(binary_search(5, test_array_genap))
-console.log(binary_search(10, test_array_genap))
+console.log(binary_search(10, test_array_genap));
 console.log(binary_search(2, test_array_genap))
-
+//
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))

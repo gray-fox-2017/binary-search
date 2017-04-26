@@ -27,7 +27,18 @@ var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
-  // Your code here
+  var low = 0;
+  var high = array.length -1;
+  var mid = Math.floor((low + high) / 2);
+
+  while (low <= high){
+    if(array[mid] > search){
+      high = mid - 1;
+    }else if(array[mid] < search){
+      low = mid + 1;
+    }else {return mid}
+    mid = Math.floor((low + high) / 2);
+  }
 
 }
 

@@ -27,8 +27,22 @@ var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
-  // Your code here
+  let length = array.length
+  let limit = 0
+  while (limit <= length){
+    let cut = Math.floor((limit + length)/2)
+    if (search === array[cut]){
+      return cut
+    }
+    if (search < array[cut]){
+      length = cut -1
+    }
+    else {
+      limit = cut + 1
+    }
 
+  }
+    return -1
 }
 
 // Driver code

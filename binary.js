@@ -30,23 +30,40 @@ function binary_search (search, array) {
   let lowIndex = 0;
   let highIndex = array.length;
   let indexHalf = Math.floor((lowIndex+highIndex)/2);
+  let maxLoop = Math.ceil(Math.sqrt(array.length));
+  let currLoop = 0;
   //console.log(indexHalf);
-  
-  while (array[indexHalf] !== search) {
-    if (search < array[indexHalf]) {
+
+  while (currLoop !== maxLoop) {
+    currLoop += 1;
+    if (search === array[indexHalf]){
+      return indexHalf;
+    }
+
+    else if (search < array[indexHalf]) {
       highIndex = indexHalf-1;
       indexHalf = Math.floor((lowIndex+highIndex)/2);
     }
+    
     else {
       lowIndex = indexHalf+1;
       indexHalf = Math.floor((lowIndex+highIndex)/2);
     }
   }
-
-  return indexHalf;
   
+  return -1;
+
 }
 
+// Ensuring accuracy
+var test_array = [1,2,3,4,5];
+console.log(binary_search(3,test_array) === 2)
+
+test_array = [13,19,24,29,32,37,43];
+console.log(binary_search(35,test_array) === -1)
+
+test_array = [100,120,130,135,150,170];
+console.log(binary_search(135,test_array) === 3)
 // Driver code
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))

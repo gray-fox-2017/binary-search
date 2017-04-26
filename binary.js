@@ -23,12 +23,68 @@ PSEUDOCODE
 
 'use strict'
 
-var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 function binary_search (search, array) {
   // Your code here
+// let min_index = 0;
+// let max_index = array.length - 1;
+//
+//   for (let i = min_index; min_index < max_index; i++){
+//     let mid_index = Math.floor((min_index + max_index)/2);
+//     if (min_index > max_index){
+//       return -1;
+//     } else if(min_index = max_index || min_index < max_index){
+//       for (let i = min_index; min_index = max_index || min_index < max_index; i++){
+//         if(mid_index < array.indexOf(search)){
+//           min_index = mid_index + 1;
+//           return min_index;
+//         } else if (mid_index > array.indexOf(search)){
+//           max_index = mid_index - 1;
+//           return max_index;
+//         } else if(mid_index === array.indexOf(search)){
+//           mid_index = array.indexOf(search);
+//           return mid_index;
+//         }
+//       }
+//       return mid_index;
+//     }
+//     return mid_index;
+//   }
+//   return mid_index;
+// var half = parseInt(array.length / 2);
+//   if (search === array[half]) {
+//     return half;
+//   }
+//   if (search > array[half]) {
+//     array.slice(half,array.length)
+//     return binary_search(search,array)
+//   } else {
+//     array.slice(0, half)
+//     return binary_search(search,array)
+//   }
+var minIndex = 0;
+ var maxIndex = array.length - 1;
+ var currentIndex;
+ var currentElement;
 
+ while (minIndex <= maxIndex) {
+  //  currentIndex = (minIndex + maxIndex) / 2 | 0;
+  currentIndex = Math.floor((minIndex + maxIndex) / 2);
+  currentElement = array[currentIndex];
+
+   if (currentElement < search) {
+       minIndex = currentIndex + 1;
+   }
+   else if (currentElement > search) {
+       maxIndex = currentIndex - 1;
+   }
+   else {
+       return currentIndex;
+   }
+ }
+ return -1;
 }
 
 // Driver code

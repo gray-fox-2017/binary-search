@@ -27,19 +27,44 @@ var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
-  // Your code here
+  let len = array.length;
+  if (len >= 2) {
+    let icen = Math.ceil(len / 2) - 1 ;
+    if (array[icen] === search) return icen;
+    else if (array[icen] < search) {
+      for (let i = icen + 1 ; i < len; i++)
+        if (array[i] === search) return i;
+      let nlen = len-icen;
+      return binary_search(search, array.splice(icen+1,nlen));
+    }
+    else if (array[icen] > search){
+      for (let i = 0 ; i < icen; i++)
+        if (array[i] === search) return i;
+      let nlen = icen-1;
+      return binary_search(search, array.splice(0,nlen));
+    }
+
+  }else return -1;
+
+
 
 }
 
-// Driver code
-console.log(binary_search(5, test_array_genap))
-console.log(binary_search(10, test_array_genap))
-console.log(binary_search(2, test_array_genap))
+let test_array = [1,2,3,4,5];
+console.log(binary_search(3, test_array) === 2);
+test_array = [13,19,24,29,32,37,43];
+console.log(binary_search(35, test_array) === -1);
+test_array = [100,120,130,135,150,170];
+console.log(binary_search(135, test_array) === 3);
 
-console.log(binary_search(6, test_array_ganjil))
-console.log(binary_search(11, test_array_ganjil))
-console.log(binary_search(2, test_array_ganjil))
-
-module.exports = {
-  binary_search
-}
+// // Driver code
+console.log(binary_search(5, test_array_genap)) // 4
+console.log(binary_search(10, test_array_genap)) //9
+console.log(binary_search(2, test_array_genap)) //1
+console.log(binary_search(6, test_array_ganjil)) //5
+console.log(binary_search(11, test_array_ganjil)) //10
+console.log(binary_search(2, test_array_ganjil)) //1
+//
+// module.exports = {
+//   binary_search
+// }

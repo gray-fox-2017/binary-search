@@ -26,11 +26,26 @@ PSEUDOCODE
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+
+
 function binary_search (search, array) {
+  var bwh = 0;
+  var atas = array.length-1;
+  var mid = Math.floor((atas + bwh) / 2);
   // Your code here
-
+while (bwh <= atas) {
+  if (array[mid] < search) {
+    bwh = mid+1;
+  }
+  else if (array[mid] > search) {
+    atas = mid+1;
+  }
+  else {
+    return mid;
+  }
+  var mid = Math.floor((atas + bwh) / 2);
 }
-
+}
 // Driver code
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))

@@ -27,35 +27,25 @@ var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array, res=0) {
-  let target=search;
-  let index;
-  for(let i=0;i<array.length;i++) {
-    if(search==array[i]) index=i;
+  let mid=Math.floor(array.length/2);
+  if(search>array[mid]) {
+    res+=Math.floor(array.length/2);
+    array=array.slice(Math.floor(array.length/2), array.length);
+    return binary_search(search, array,res);
   }
-  if(array.length==2) {
-    res+=index;
-    return res;
+  if(search<array[mid]) {
+    res+=0;
+    array=array.slice(0, Math.round(array.length/2));
+    return binary_search(search, array,res);
   }
-  if(index==Math.floor(array.length/2)) {
-    return res+index;
-  } else {
-    if(index>array.length/2) {
-      res+=Math.floor(array.length/2);
-      let arr=array.slice(Math.floor(array.length/2), array.length);
-      return binary_search(target, arr,res);
-    }
-    if(index<array.length/2) {
-      res+=0;
-      let arr=array.slice(0, Math.round(array.length/2));
-      return binary_search(target, arr,res);
-    }
+  if(search==array[mid]) {
+    return res+=mid;
   }
-  return -1;
 }
 
 // Driver code
 console.log(binary_search(5, test_array_genap))
-console.log(binary_search(12, test_array_genap))
+console.log(binary_search(7, test_array_genap))
 console.log(binary_search(10, test_array_genap))
 console.log(binary_search(2, test_array_genap))
 

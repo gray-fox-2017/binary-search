@@ -28,6 +28,26 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  let foundIndex;
+  let minIndex = 0
+  let maxIndex = array.length - 1;
+
+  for (let i = 0; i < array.length; i++) {
+    let midIndex = parseInt((maxIndex + minIndex) / 2);
+    if (search == array[midIndex]) {
+      foundIndex = midIndex;
+      break;
+    } else if (search > array[midIndex]) {
+      minIndex = midIndex + 1;
+    } else if (search < array[midIndex]) {
+      maxIndex = midIndex - 1;
+    }
+  }
+  if (minIndex > maxIndex) {
+    return -1;
+  } else {
+    return foundIndex;
+  }
 
 }
 

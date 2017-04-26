@@ -23,19 +23,32 @@ PSEUDOCODE
 
 'use strict'
 
-var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+var test_array_genap = [3, 7, 9, 10, 22, 23, 24, 25, 26, 30]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search (search, array) {
-  // Your code here
-
+function binary_search (search, array, tampung=0) {
+  let indexMid = Math.floor((array.length)/2);
+  if(array[indexMid] == search){
+    return tampung+=indexMid;
+  } else if (search > array[indexMid-1]){
+    let higherArray = array.slice(indexMid, array.length);
+    tampung+=indexMid;
+    //return higherArray;
+    return binary_search(search, higherArray, tampung);
+  } else if (search < array[indexMid]){
+    let lowerArray = array.slice(0, indexMid);
+    tampung+=0
+    //return lowerArray;
+    return binary_search(search, lowerArray, tampung);
+  }
+  return -1;
 }
 
 // Driver code
-console.log(binary_search(5, test_array_genap))
-console.log(binary_search(10, test_array_genap))
+console.log(binary_search(24, test_array_genap))
+console.log(binary_search(10, test_array_genap));
 console.log(binary_search(2, test_array_genap))
-
+// //
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))

@@ -28,12 +28,41 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
-
+  let highIndex = array.length-1;
+  let lowIndex = 0;
+  while (lowIndex<=highIndex) {
+    let midIndex = Math.floor((lowIndex+highIndex)/2);
+    if(search<array[midIndex]){
+      highIndex = midIndex - 1
+    } else if (search>array[midIndex]) {
+      lowIndex = midIndex + 1
+    } else {
+      return midIndex
+    }
+  }
+  return -1
 }
+
+// function binary_search (search,array){
+//   let highIndex = array.length-1;
+//   let lowIndex = 0;
+//   let midIndex = Math.floor((lowIndex+highIndex)/2);
+//   if (search === array[midIndex]) {
+//     return midIndex
+//   } else if (search > array[midIndex]) {
+//     array = array.slice(midIndex+1);
+//     binary_search(search,array)
+//   } else if (search < array[midIndex]) {
+//     binary_search(search,array.slice(lowIndex,midIndex))
+//   } else {
+//     return -1
+//   }
+// }
 
 // Driver code
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))
+//console.log(binary_search('asdasd', test_array_genap))
 console.log(binary_search(2, test_array_genap))
 
 console.log(binary_search(6, test_array_ganjil))

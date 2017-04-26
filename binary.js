@@ -70,8 +70,9 @@ var minIndex = 0;
  var currentElement;
 
  while (minIndex <= maxIndex) {
-   currentIndex = (minIndex + maxIndex) / 2 | 0;
-   currentElement = array[currentIndex];
+  //  currentIndex = (minIndex + maxIndex) / 2 | 0;
+  currentIndex = Math.floor((minIndex + maxIndex) / 2);
+  currentElement = array[currentIndex];
 
    if (currentElement < search) {
        minIndex = currentIndex + 1;

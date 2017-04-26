@@ -26,23 +26,28 @@ PSEUDOCODE
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search (search, array) {
+function binary_search (search, array, res=0) {
   let target=search;
   let index=0;
   for(let i=0;i<array.length;i++) {
     if(search==array[i]) index=i;
   }
-  if(array.length==2) return 0;
+  if(array.length==2) {
+    res+=index;
+    return res;
+  }
   if(index==Math.floor(array.length/2)) {
     return index;
   } else {
     if(index>array.length/2) {
+      res+=Math.floor(array.length/2);
       let arr=array.slice(Math.floor(array.length/2), array.length);
-      return binary_search(target, arr);
+      return binary_search(target, arr,res);
     }
     if(index<array.length/2) {
+      res+=0;
       let arr=array.slice(0, Math.round(array.length/2));
-      return binary_search(target, arr);
+      return binary_search(target, arr,res);
     }
   }
 }

@@ -28,18 +28,28 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
-
+  var low = 0, range = array.length-1, middle = 0;
+  while(low <= range){
+    middle = Math.floor((low + range)/2);
+    if (array[middle] < search){
+      low = middle + 1;
+    } else if (array[middle] > search){
+      range = middle - 1;
+    } else {
+      return middle;
+    }
+  }
+  return -1;
 }
 
 // Driver code
+console.log(binary_search(2, test_array_genap))
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))
-console.log(binary_search(2, test_array_genap))
 
+console.log(binary_search(2, test_array_ganjil))
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
-console.log(binary_search(2, test_array_ganjil))
-
 module.exports = {
   binary_search
 }

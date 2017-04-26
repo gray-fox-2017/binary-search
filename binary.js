@@ -28,17 +28,38 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  var tengah = Math.ceil(array.length/2) - 1;
 
+  function dalamSearch(search, array) {
+    if (search === array[tengah]) {
+      return search +' ada di index ke-' + tengah;
+    } else if (search > array[tengah]) {
+      tengah += Math.ceil(tengah/2);
+      return dalamSearch(search, array);
+    } else if (search < array[tengah]) {
+      tengah -= Math.ceil(tengah/2);
+      return dalamSearch(search, array);
+    } else if (tengah > array.length) {
+      tengah = array.length-1
+      return search +' ada di index ke-' + tengah;
+    }
+  }
+
+  return dalamSearch(search, array);
 }
 
 // Driver code
+console.log('Test Array Genap')
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))
 console.log(binary_search(2, test_array_genap))
+console.log(binary_search(1, test_array_genap))
 
+console.log('Test Array Ganjil')
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
+console.log(binary_search(1, test_array_ganjil))
 
 module.exports = {
   binary_search

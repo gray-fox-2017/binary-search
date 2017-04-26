@@ -42,6 +42,7 @@ function binary_search (search, array) {
     }
   }
   return -1
+
 }
 
 // Driver code

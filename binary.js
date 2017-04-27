@@ -40,8 +40,8 @@ function binary_search (search, array) {
       tengah -= Math.ceil(tengah/2);
       return dalamSearch(search, array);
     } else if (tengah > array.length) {
-      tengah = array.length-1
-      return search +' ada di index ke-' + tengah;
+      //tengah = array.length-1
+      return -1//search +' ada di index ke-' + tengah;
     }
   }
 
@@ -60,6 +60,7 @@ console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
 console.log(binary_search(1, test_array_ganjil))
+console.log(binary_search(22, test_array_ganjil))
 
 module.exports = {
   binary_search

@@ -21,6 +21,15 @@ PSEUDOCODE
 - continue until "half_array" index is equal to number, at which point return the index position of number chosen.
 */
 
+/*
+    Set L to 0 and R to n − 1.
+    If L > R, the search terminates as unsuccessful.
+    Set m (the position of the middle element) to the floor (the largest previous integer) of (L + R) / 2.
+    If Am < T, set L to m + 1 and go to step 2.
+    If Am > T, set R to m – 1 and go to step 2.
+    Now Am = T, the search is done; return m.
+*/
+
 'use strict'
 
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -28,17 +37,30 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+var lowRange = 0, hightRange = array.length-1, middleRange;
 
+while(lowRange <= hightRange){
+middleRange = Math.floor((hightRange + lowRange) / 2);
+// console.log(middleRange);
+if(array[middleRange] < search){
+  lowRange = middleRange + 1;
+}else if(array[middleRange] > search){
+  hightRange = middleRange - 1;
+}else{
+  return middleRange;
 }
-
+}
+return -1;
+}
 // Driver code
-console.log(binary_search(5, test_array_genap))
+
 console.log(binary_search(10, test_array_genap))
+console.log(binary_search(4, test_array_genap))
 console.log(binary_search(2, test_array_genap))
 
-console.log(binary_search(6, test_array_ganjil))
+console.log(binary_search(30, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
-console.log(binary_search(2, test_array_ganjil))
+console.log(binary_search(1, test_array_ganjil))
 
 module.exports = {
   binary_search

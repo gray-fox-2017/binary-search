@@ -27,7 +27,11 @@ var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
-  // Your code here
+   //Your code here
+  //  if (array.length/2 !==0) {
+  //    array.push(array[array.length]+1)
+  //  }
+
   var tengah = Math.ceil(array.length/2) - 1;
 
   function dalamSearch(search, array) {
@@ -41,25 +45,44 @@ function binary_search (search, array) {
       return dalamSearch(search, array);
     } else if (tengah > array.length) {
       //tengah = array.length-1
-      return -1//search +' ada di index ke-' + tengah;
+      // if (search === array[tengah-=2]) {
+      //   return search + ' ada di index ke-' + (tengah-2);
+      // } else {
+        return -1//search +' ada di index ke-' + tengah;
+      //}
     }
   }
 
   return dalamSearch(search, array);
 }
 
-// Driver code
+//Driver code
 console.log('Test Array Genap')
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))
 console.log(binary_search(2, test_array_genap))
 console.log(binary_search(1, test_array_genap))
+console.log(binary_search(3, test_array_genap))
+console.log(binary_search(4, test_array_genap))
+console.log(binary_search(6, test_array_genap))
+console.log(binary_search(7, test_array_genap))
+console.log(binary_search(8, test_array_genap))
+console.log(binary_search(9, test_array_genap))
 
 console.log('Test Array Ganjil')
-console.log(binary_search(6, test_array_ganjil))
-console.log(binary_search(11, test_array_ganjil))
-console.log(binary_search(2, test_array_ganjil))
 console.log(binary_search(1, test_array_ganjil))
+console.log(binary_search(2, test_array_ganjil))
+console.log(binary_search(3, test_array_ganjil))
+console.log(binary_search(4, test_array_ganjil))
+console.log(binary_search(5, test_array_ganjil))
+console.log(binary_search(6, test_array_ganjil))
+console.log(binary_search(7, test_array_ganjil))
+console.log(binary_search(8, test_array_ganjil))
+console.log(binary_search(9, test_array_ganjil))
+console.log(binary_search(10, test_array_ganjil))
+console.log(binary_search(11, test_array_ganjil))
+
+console.log(binary_search(15, test_array_ganjil))
 console.log(binary_search(22, test_array_ganjil))
 
 module.exports = {

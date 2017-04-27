@@ -16,14 +16,10 @@ function binary_search (search, array, tempIndx = 0) {
       if (len === 2)
         if (array[1] === search) return tempIndx+1;
         else if (array[2] === search) return tempIndx+2;
-
       icen += 1;
       tempIndx = tempIndx+icen;
       nlen = nlen > 0 ? nlen : 1;
       return binary_search(search, array.splice(icen,nlen),tempIndx);
-
-
-
     }
     //search lebi kecil
     else if (array[icen] > search){

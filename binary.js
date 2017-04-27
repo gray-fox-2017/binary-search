@@ -88,3 +88,43 @@ console.log(binary_search(22, test_array_ganjil))
 module.exports = {
   binary_search
 }
+
+//cadangan
+
+var test_array_ganjil = [1, 2, 3, 4, 5];
+var test_array_genap = [1, 2, 3, 4, 5, 6]
+
+function binary_search(search, arr) {
+  if (search < arr[0]) {
+    return -1
+  } else if (search > arr[(arr.length)-1]) {
+    return -1
+  }
+  
+  if (arr.length % 2 === 0) {
+    var tengah = (arr.length/2)-1;
+    
+  } else {
+    var tengah = (Math.floor(arr.length/2));
+  }
+  
+  if (search = arr[tengah]) {
+    
+      return search + ' ada di index ke-' + tengah
+      
+    } else if (search > arr[tengah]) {
+      
+      let arrB = arr.slice(tengah+1, array.length-1)
+      
+      return binary_search(search, arrB);
+    
+    } else if (search < arr[tengah]) {
+    
+      let arrB = arr.slice(0, tengah-1);
+      
+      return binary_search(search, arrB);
+    }
+}
+
+
+console.log(binary_search(5, test_array_ganjil))

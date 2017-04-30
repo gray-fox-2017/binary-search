@@ -16,7 +16,7 @@ PSEUDOCODE
 - make sure that this works for both even and odd array lengths
 - create a method to cut our array length in half, and determine if our object is higher or lower than the array number at that "half array" index position
 - if our number is exactly the same as the "half array" index number, return the index position of that number in the array.
-- if our number is higher, discard the lower half of our array set and continue testing against the upper half of our array (taking the middle position each time).
+- if our number is higher, discard the lower half of our arraset and continue testing against the upper half of our array (taking the middle position each time).
 - if lower, do the opposite of above.
 - continue until "half_array" index is equal to number, at which point return the index position of number chosen.
 */
@@ -36,7 +36,7 @@ function binary_search (search, array) {
     var IndexMid = Math.floor((IndexMaximal + IndexMinimal) / 2);
     if(array[IndexMid] == search){
       Hasil = IndexMid;
-      break ;
+      return Hasil;
     }
     else if(array[IndexMid] < search){
       IndexMinimal = IndexMid + 1;
